@@ -1,6 +1,5 @@
 # Power of Python in GIS
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.11202762.svg)](https://doi.org/10.5281/zenodo.11202762) 
 [![Static Badge](https://img.shields.io/badge/Python-black?style=flat-square&logo=python&logoColor=blue&labelColor=gray&color=yellow)](https://www.python.org/)
 [![Static Badge](https://img.shields.io/badge/jupyter-blue?style=flat-square&logo=jupyter&logoColor=white&labelColor=gray&color=orange)](https://jupyter.org/)
 [![Static Badge](https://img.shields.io/badge/MIT%20License%20-blue?style=flat-square)](https://github.com/UtrechtUniversity/src-jupyter-workshop-template/blob/main/LICENSE)
@@ -11,30 +10,65 @@ This repository contains material for a short workshop demonstrating the power o
 
 The main Python libraries used are:
 
-- `xarray`
-- `rasterio`
 - `geopandas`
-- `rioxarray`
-- `earthpy`
+- `matplotlib`
 - `pandas`
 - `shapely`
 - `fiona`
 
-## Installation
+## Scenario 1: Python Workbench Desktop 
 
-The participants of this workshop are typically provided with a notebook environment so they don't need to install anything.
+### Step 1: Clone the repository
+Open a terminal
+Navigate to the right folder
 
-- Install Python 3.10 and Jupyter ([installation instructions](https://utrechtuniversity.github.io/workshop-introduction-to-python/installation-and-setup.html)). 
-- [Clone the GitHub repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
-- Install the required Python packages automatically using `conda env create -f environment.yml`. This assumes you have conda installed (e.g. by following the installation instructions above). Run this command by opening a terminal (e.g. Anaconda prompt on Windows) and first navigating to the cloned repository on your PC (previous step).
+git clone https://github.com/UtrechtUniversity/src-python-example.git
+cd src-python-example/
 
-## Repository materials
+### Step 2: Create Environment 
 
-- The workshop materials can be found in the  <a href="https://github.com/UtrechtUniversity/gis-python-power/tree/main/workshop_materials">**wokshop-materials folder**</a>. It contains the jupyter notebooks as well as the data used for the workshop.
-- The folder <a href="https://github.com/UtrechtUniversity/gis-python-power/tree/main/playbooks">**playbooks**</a> is exclusively dedicated for automated transfer of the course materials to the digital workspaces on SURF Research Cloud.
-- The `environment.yml` file describes the packages that are required to run the notebooks. The file is used to create a python kernel on SURF Research Cloud that has all the packages installed.
-- The `.github` folder contains a GitHub Actions workflow that will automatically update the zipped `workshop-materials.zip` whenever there are changes to the `workshop-materials` folder.
+#### Option 1: `uv`
+##### Option 1a: From `pyproject.toml` and lockfile `uv.lock`
+
+```
+uv sync
+source .venv/bin/activate
+```
+
+##### Option 1b: From `requirements.txt`
+
+```
+uv venv --python 3.10
+source .venv/bin/activate
+uv pip install -r requirements.txt
+```
+
+#### Environment option 2: `pyenv` with requirements.txt
+
+```
+pyenv install 3.10
+pyenv exec python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+#### Environment option 3: `conda` with environment.yml
+
+```
+conda init
+conda env create --file=environment.yml
+conda activate geo-kernel
+```
+
+### Step 3: Run the the Jupyter notebook in VSCodium
+
+- Open VSCodium
+- Open the folder of the cloned github repo
+- Open notebooks/Vectors.ipynb
+- Install the required extensions (will be asked to you)
+- Select python interpreter (.venv (or geo-kernel in case of conda environment)
+- Click: Run all
 
 ## Contact
 
-[Geo Data Team](https://geo-data-support.sites.uu.nl/)
+[UU Research Engineering team](https://www.uu.nl/research-engineering)
