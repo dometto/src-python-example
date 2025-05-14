@@ -22,8 +22,10 @@ The main Python libraries used are:
 Open a terminal
 Navigate to the right folder
 
+```
 git clone https://github.com/UtrechtUniversity/src-python-example.git
 cd src-python-example/
+```
 
 ### Step 2: Create Environment 
 
